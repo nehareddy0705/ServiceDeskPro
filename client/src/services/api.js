@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const rawUrl = import.meta.env.VITE_API_URL || 'https://servicedeskpro-ard5.onrender.com';
+const baseURL = rawUrl.endsWith('/api') ? rawUrl : `${rawUrl.replace(/\/+$/, '')}/api`;
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
