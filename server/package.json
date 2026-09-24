@@ -2,8 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "description": "ServiceDesk Pro Backend Server",
-  "main": "server.js",
+  "main": "src/server.js",
   "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
@@ -12,5 +16,8 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
