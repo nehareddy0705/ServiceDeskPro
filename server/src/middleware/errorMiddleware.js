@@ -33,6 +33,11 @@ const errorHandler = (err, req, res, next) => {
     error = new ApiError(401, 'Authentication token has expired. Please log in again.');
   }
 
+  // Handle CORS errors
+  if (err.message && err.message.includes('CORS')) {
+    error = new ApiError(403, err.message);
+  }
+
   const statusCode = error.statusCode || 500;
   const message = error.message || 'Internal Server Error';
   const errors = error.errors || null;
