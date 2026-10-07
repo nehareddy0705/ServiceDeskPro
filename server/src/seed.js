@@ -1,4 +1,10 @@
 require('dotenv').config();
+const dns = require('dns');
+try {
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+} catch (e) {
+  // ignore
+}
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const {
@@ -17,7 +23,7 @@ const {
   AuditLog,
 } = require('./models');
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/servicedesk_pro';
+const MONGODB_URI = (process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/servicedesk_pro').trim();
 
 async function seed() {
   console.log('Connecting to MongoDB at:', MONGODB_URI);
